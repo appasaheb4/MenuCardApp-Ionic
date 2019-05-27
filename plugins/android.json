@@ -1,0 +1,59 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "io.ionic.meucardyear2017"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "io.ionic.meucardyear2017"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "io.ionic.meucardyear2017"
+    },
+    "cordova-plugin-file-transfer": {
+      "PACKAGE_NAME": "io.ionic.meucardyear2017"
+    },
+    "cordova-plugin-filepath": {
+      "PACKAGE_NAME": "io.ionic.meucardyear2017"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "io.ionic.meucardyear2017"
+    },
+    "cordova-plugin-googlemaps": {
+      "API_KEY_FOR_ANDROID": "AIzaSyAIqxvZO5SowI2hQ1ReEdxFGwE74NA0Puk",
+      "PACKAGE_NAME": "io.ionic.meucardyear2017"
+    },
+    "cordova-plugin-ionic-webview": {
+      "PACKAGE_NAME": "io.ionic.meucardyear2017"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "io.ionic.meucardyear2017"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "io.ionic.meucardyear2017"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "io.ionic.meucardyear2017"
+    },
+    "cordova-plugin-x-socialsharing": {
+      "PACKAGE_NAME": "io.ionic.meucardyear2017"
+    },
+    "ionic-plugin-keyboard": {
+      "PACKAGE_NAME": "io.ionic.meucardyear2017"
+    },
+    "mx.ferreyra.callnumber": {
+      "PACKAGE_NAME": "io.ionic.meucardyear2017"
+    }
+  },
+  "dependent_plugins": {
+    "es6-promise-plugin": {
+      "PACKAGE_NAME": "io.ionic.meucardyear2017"
+    }
+  }
+}

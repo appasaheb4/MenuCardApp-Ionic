@@ -1,0 +1,100 @@
+<ion-header>
+    <ion-navbar>   
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>MENU PHOTOS</ion-title>
+    </ion-navbar> 
+    <ion-navbar *ngFor="let item of restAllData"  color="appcolor" class="marginTopLine">
+        <ion-title class="text-center">{{item.restName}}, {{item.area}}, {{item.city}}</ion-title>
+    </ion-navbar>  
+</ion-header> 
+
+<ion-content>      
+    <br/><br/><br/><br/>  
+    <div class="slider">     
+        <ion-slides *ngIf="restAllData && restAllData.length"   loop="false" speed="500"  pager="true" slidesPerView="1">
+            <div *ngFor="let item of restAllData">
+                <ion-slide class="sliderS" *ngIf="item.imagePath1!='http://menuapphybrid.newapptec.com/Content/Images/WebImage/tblAddMenu/'" >
+                       <img src="{{item.imagePath1}}" class="img-responsive img-thumbnail" imageViewer    alt="Image 1" >
+                </ion-slide>   
+            </div>
+            <div *ngFor="let item of restAllData">
+                <ion-slide class="sliderS" *ngIf="item.imagePath2!='http://menuapphybrid.newapptec.com/Content/Images/WebImage/tblAddMenu/'">   
+                       <img src="{{item.imagePath2}}" class="img-responsive img-thumbnail"  imageViewer    alt="Image 2" >
+                </ion-slide>    
+            </div>
+            <div *ngFor="let item of restAllData">
+                <ion-slide class="sliderS" *ngIf="item.imagePath3!='http://menuapphybrid.newapptec.com/Content/Images/WebImage/tblAddMenu/'">   
+
+                       <img src="{{item.imagePath3}}" class="img-responsive img-thumbnail" imageViewer    alt="Image 3" >
+
+                </ion-slide>    
+            </div>
+            <div *ngFor="let item of restAllData">
+                <ion-slide  class="sliderS"  *ngIf="item.imagePath4!='http://menuapphybrid.newapptec.com/Content/Images/WebImage/tblAddMenu/'">   
+                        <img src="{{item.imagePath4}}" class="img-responsive img-thumbnail"  imageViewer   alt="Image 4" >
+                </ion-slide>    
+            </div>
+            <div *ngFor="let item of restAllData">
+                <ion-slide class="sliderS"  *ngIf="item.imagePath5!='http://menuapphybrid.newapptec.com/Content/Images/WebImage/tblAddMenu/'">   
+                       <img src="{{item.imagePath5}}" class="img-responsive img-thumbnail"  imageViewer    alt="Image 5" >
+                </ion-slide>    
+            </div>   
+            <div *ngFor="let item of restAllData">
+                <ion-slide class="sliderS"  *ngIf="item.imagePath6!='http://menuapphybrid.newapptec.com/Content/Images/WebImage/tblAddMenu/'">   
+                       <img src="{{item.imagePath6}}" class="img-responsive img-thumbnail"  imageViewer   alt="Image 6" >
+                </ion-slide>    
+            </div> 
+            <div *ngFor="let item of restAllData">
+                <ion-slide class="sliderS" *ngIf="item.imagePath7!='http://menuapphybrid.newapptec.com/Content/Images/WebImage/tblAddMenu/'">   
+                       <img src="{{item.imagePath7}}" class="img-responsive img-thumbnail" imageViewer    alt="Image 7" >
+                </ion-slide>    
+            </div>
+            <div *ngFor="let item of restAllData">
+                <ion-slide class="sliderS"  *ngIf="item.imagePath8!='http://menuapphybrid.newapptec.com/Content/Images/WebImage/tblAddMenu/'">   
+                       <img src="{{item.imagePath8}}" class="img-responsive img-thumbnail" imageViewer    alt="Image 8" >
+                </ion-slide>    
+            </div>
+            <div *ngFor="let item of restAllData">
+                <ion-slide class="sliderS"  *ngIf="item.imagePath9!='http://menuapphybrid.newapptec.com/Content/Images/WebImage/tblAddMenu/'">   
+                       <img src="{{item.imagePath9}}" class="img-responsive img-thumbnail"  imageViewer   alt="Image 9" imageViewer>
+                </ion-slide>    
+            </div>
+            <div *ngFor="let item of restAllData">
+                <ion-slide class="sliderS"  *ngIf="item.imagePath10!='http://menuapphybrid.newapptec.com/Content/Images/WebImage/tblAddMenu/'">   
+                       <img src="{{item.imagePath10}}" class="img-responsive img-thumbnail"  imageViewer    alt="Image 10" >
+                </ion-slide>          
+            </div>
+            <div *ngFor="let item of restAllData">
+                <ion-slide  *ngIf="item.imagePath1=='http://menuapphybrid.newapptec.com/Content/Images/WebImage/tblAddMenu/' && item.imagePath2=='http://menuapphybrid.newapptec.com/Content/Images/WebImage/tblAddMenu/' && item.imagePath3=='http://menuapphybrid.newapptec.com/Content/Images/WebImage/tblAddMenu/' && item.imagePath4=='http://menuapphybrid.newapptec.com/Content/Images/WebImage/tblAddMenu/' && item.imagePath5=='http://menuapphybrid.newapptec.com/Content/Images/WebImage/tblAddMenu/' && item.imagePath6=='http://menuapphybrid.newapptec.com/Content/Images/WebImage/tblAddMenu/' && item.imagePath7=='http://menuapphybrid.newapptec.com/Content/Images/WebImage/tblAddMenu/' && item.imagePath8=='http://menuapphybrid.newapptec.com/Content/Images/WebImage/tblAddMenu/' && item.imagePath9=='http://menuapphybrid.newapptec.com/Content/Images/WebImage/tblAddMenu/' && item.imagePath10=='http://menuapphybrid.newapptec.com/Content/Images/WebImage/tblAddMenu/'">   
+                    <h1>Image not found.</h1>
+                </ion-slide>      
+            </div>
+        </ion-slides>          
+    </div>
+</ion-content>
+
+<ion-footer>   
+    <ion-grid>
+        <ion-row>   
+            <ion-col col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3></ion-col>
+            <ion-col col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 *ngFor="let item of restAllData">
+                     <button ion-button icon-only block  color="dark" clear  (click)="callingMenu(item.phoneNo1);">
+                    <ion-icon ios="ios-call" md="md-call" color="callButton" ></ion-icon>
+                </button>        
+            </ion-col>    
+            <ion-col col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 *ngFor="let item of restAllData">               
+                     <button ion-button icon-only  color="dark" clear (click)=" locationPageShow(item.restName,item.area,item.suburb,item.city);">
+                    <ion-icon ios="ios-pin" md="md-pin" color="locationButton"></ion-icon>
+                </button>     
+            </ion-col>
+            <ion-col col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 *ngFor="let item of restAllData">   
+                     <button ion-button icon-only   color="dark" clear (click)="regular(item.restName,item.area,item.city,item.imagePath1)">
+                    <ion-icon ios="ios-share" md="md-share" color="shareButton"></ion-icon>
+                </button>   
+            </ion-col>  
+            <ion-col col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3></ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-footer>

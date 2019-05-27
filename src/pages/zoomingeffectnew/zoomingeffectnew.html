@@ -1,0 +1,8 @@
+<ion-content class="content-contact" >
+<!--    <ion-icon class="color-wt" (click)="back()" name="arrow-back"></ion-icon>-->
+  <ion-slides>
+    <ion-slide *ngFor="let item of scheduleitems"  >  
+      <img src="{{item}}" class="zoomTarget" data-targetsize="0.45" data-duration="600"/>  
+    </ion-slide>             
+  </ion-slides>
+</ion-content>

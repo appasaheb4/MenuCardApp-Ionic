@@ -1,0 +1,68 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Registration</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <div  id="registationPage">
+    <form [formGroup]="registationForm" >
+        <ion-list inset >   
+            <ion-item>
+                <ion-input type="text"  placeholder="Name *" formControlName="data.name" [(ngModel)]="data.name"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-input type="number" placeholder="Mobile Number *"  formControlName="data.mobileNo" [(ngModel)]="data.mobileNo"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-input type="password" value="" placeholder="Password *" formControlName="data.oldPass" [(ngModel)]="data.oldPass"  required></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-input type="password" value="" placeholder="Confirm Password *" formControlName="data.newPass" [(ngModel)]="data.newPass"  required></ion-input>
+            </ion-item>
+            <ion-item>   
+                <ion-input type="email" placeholder="Email *" formControlName="data.email" [(ngModel)]="data.email" ></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-textarea type="text" placeholder="Address" formControlName="data.address" [(ngModel)]="data.address"></ion-textarea>
+            </ion-item>
+            <ion-item>
+                <ion-input type="text" placeholder="Road Name *" formControlName="data.area"  [(ngModel)]="data.area"></ion-input>
+            </ion-item>
+             <ion-item>
+                <ion-input type="text" placeholder="Suburb *" formControlName="data.suburb"  [(ngModel)]="data.suburb"></ion-input>
+            </ion-item>  
+            <ion-item>
+                <ion-input type="text" placeholder="City *" formControlName="data.city"  [(ngModel)]="data.city"></ion-input>
+            </ion-item>
+            <ion-item>
+
+                <ion-input type="number" placeholder="PinCode" formControlName="data.pin"  [(ngModel)]="data.pin"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-input type="text" placeholder="State" formControlName="data.state"  [(ngModel)]="data.state"></ion-input>
+            </ion-item>  
+            <ion-item>
+                <ion-input type="text" placeholder="Country" formControlName="data.cuntry" [(ngModel)]="data.cuntry"></ion-input>
+            </ion-item>
+
+   
+
+            <ion-item>
+                <ion-label color="blue" class="lblSize12">I understand & agree to the Terms & Conditions</ion-label>       
+                <ion-checkbox color="dark"  formControlName="teapCheack" [(ngModel)]="teapCheack"  (ionChange)="termAlert();"></ion-checkbox>
+            </ion-item>  
+            <ion-item>
+                <button ion-button full type="submit" class="lblSize" round color="appcolor" [disabled]="!registationForm.valid" *ngIf="btnSubmit" (click)="saveData();">Submit</button>
+            </ion-item>
+        </ion-list>
+    </form>
+    </div>
+ <div id="light" class="white_content text-center">
+     <h3>Disclaimer & Indemnity</h3>
+      All information, details, data and contents, expressed or implied, as seen on Menu App- this mobile application & related website/s, under each specific restaurant, is given and/or uploaded on daily, weekly, monthly or yearly basis by the registered respective restaurants / mobile users themselves. Hence this app (Menu App), the app developing company (Newapp Technologies), www.newapptec.com, its management, developers, staff, affiliates, related website/s etc are not responsible or liable regarding the accuracy, correctness, adequacy, validity, reliability, availability or completeness of any representation, information, content, pricing, data etc on this mobile application. It is understood and accepted by the user/s that they will communicate directly with the respective / specific restaurants regarding any inaccurate representation, claim, complaints and resolutions. This mobile application and developers will not be held responsible under any circumstances. Hence this mobile application, the mobile application developing company (Newapp Technologies), www.newapptec.com, its management, developers, staff, affiliates, related website/s etc hereby stand fully indemnified against any claims or complaints regarding information, details, pricing, data and contents as seen, visible from time to time on this mobile application & related website/s.  <br/>
+      <button ion-button outline class="pull-right" href="javascript:void(0)" onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">Close</button>
+  </div>
+  <div id="fade" class="black_overlay"></div>
+    
+ </ion-content>
+

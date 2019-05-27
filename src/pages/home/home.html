@@ -1,0 +1,147 @@
+<ion-header>
+    <ion-navbar color="appcolor">
+        <button *ngIf="!toggled" ion-button icon-only menuToggle><ion-icon name="menu"></ion-icon></button>
+        <ion-title *ngIf="!toggled">Menu Card</ion-title>
+        <ion-searchbar *ngIf="toggled"  [showCancelButton]="true"  [(ngModel)]="searchTerm" (ionCancel)="toggleSearch()" (ionInput)="setFilteredItems()"  placeholder="Restaurant Name , Area , City"></ion-searchbar>
+        <ion-buttons end *ngIf="!toggled">
+                     <button ion-button icon-only (click)="toggleSearch()"><ion-icon name="search" ></ion-icon></button>
+            <!--            <button ion-button icon-only ><ion-icon name="notifications"></ion-icon>
+                          <ion-badge id="notifications-badge" color="danger" *ngFor="let restData of getAllRest">{{restData.count}}</ion-badge>
+                        </button>                 -->
+        </ion-buttons>                     
+    </ion-navbar>
+    <ion-navbar color="appcolor" class="marginTopLine">
+        <ion-segment color="white"  [(ngModel)]="tabs">
+
+            <ion-segment-button (click)="selectTab(0)"
+                value="0">
+                <button color="addBtton" (click)="addMenu();" style="margin-bottom: 15px;margin-right: 10px;"  ion-button icon-only><ion-icon name="add"></ion-icon></button>
+                <span id="swiptabTitle">My Menus</span>
+            </ion-segment-button>
+            <ion-segment-button (click)="selectTab(1)"
+                value="1"><span id="swiptabTitle">Restaurants</span>
+            </ion-segment-button>
+            <div id="slide" class="slide"></div>
+        </ion-segment>
+    </ion-navbar>
+</ion-header>
+
+<ion-slides  #pageSlider id="pageSlider"  (ionSlideWillChange)="changeWillSlide($event)" style="z-index: 0">
+    <ion-slide>
+        <ion-grid padding >   
+            <span *ngIf="items == null" id="box" class="hidenText">Tap <b>+</b> to add your first Menu </span>
+            <ion-row *ngFor="let userAddData of items" >
+                <ion-col col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 (click)="openMyMenuPage(userAddData.id);">
+                         <img-loader src="{{userAddData.imagePath1}}" (load)="onImageLoad($event)" class="iconShow img-responsive"></img-loader>
+                </ion-col>
+                <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 class="restName" (click)="openMyMenuPage(userAddData.id);" >
+                    {{userAddData.restName}}, {{userAddData.area}}, {{userAddData.city}}
+                </ion-col>
+                <ion-col col-1 >
+                    <div *ngIf="userAddData.type=='Veg'">
+                        <img src="http://menuapphybrid.newapptec.com/Content/Images/MobileImage/Icon/veg.png"  alt="" />
+                    </div>
+                    <div *ngIf="userAddData.type=='Non-Veg'">
+                        <img src="http://menuapphybrid.newapptec.com/Content/Images/MobileImage/Icon/nonveg.png" alt="" />
+                    </div>
+                    <div *ngIf="userAddData.type=='Veg,Non-Veg'">
+                        <img src="http://menuapphybrid.newapptec.com/Content/Images/MobileImage/Icon/veg.png"  alt="" />
+                        <img src="http://menuapphybrid.newapptec.com/Content/Images/MobileImage/Icon/nonveg.png" alt="" />
+                    </div>
+                    <div *ngIf="userAddData.type=='Non-Veg,Veg'">
+                        <img src="http://menuapphybrid.newapptec.com/Content/Images/MobileImage/Icon/veg.png"  alt="" />
+                        <img src="http://menuapphybrid.newapptec.com/Content/Images/MobileImage/Icon/nonveg.png" alt="" />
+                    </div>
+                </ion-col>
+                <ion-col col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 style="height: 50px;"  (click)="regularShareMenu(userAddData.restName,userAddData.area,userAddData.city,userAddData.imagePath1);">
+                    <ion-icon class="share-icon imgIcon" name="share" color="shareButton"></ion-icon>
+                </ion-col>
+                <ion-col col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 style="height: 50px;">
+                    <ion-icon name="pin" class="imgIcon" (click)=" locationPageShow(userAddData.restName,userAddData.area,userAddData.suburb,userAddData.city,userAddData.state);" color="locationButton"></ion-icon>
+                </ion-col>
+                <ion-col col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 style="height: 50px;" (click)="launchDialer(userAddData.phoneNo1)">
+                    <ion-icon class="share-icon imgIcon" name="call" color="callButton"></ion-icon>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-slide>
+    <ion-slide>
+        <ion-grid padding *ngIf="!toggled">
+            <ion-row *ngFor="let restData of getAllRest">
+                <ion-col col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 (click)="openRestMenuPage(restData.id);">
+                         <img-loader src="{{restData.imagePath1}}" (load)="onImageLoad($event)" class="iconShow img-responsive"></img-loader>
+                </ion-col>
+                <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 class="restName" (click)="openRestMenuPage(restData.id);">
+                    {{restData.restName}}, {{restData.area}}, {{restData.city}}
+                </ion-col>
+                <ion-col col-1 >
+                    <div *ngIf="restData.type=='Veg'">
+                        <img src="http://menuapphybrid.newapptec.com/Content/Images/MobileImage/Icon/veg.png"  alt="" />
+                    </div>
+                    <div *ngIf="restData.type=='Non-Veg'">
+                        <img src="http://menuapphybrid.newapptec.com/Content/Images/MobileImage/Icon/nonveg.png" alt="" />
+                    </div>
+                    <div *ngIf="restData.type=='Veg,Non-Veg'">
+                        <img src="http://menuapphybrid.newapptec.com/Content/Images/MobileImage/Icon/veg.png"  alt="" />
+                        <img src="http://menuapphybrid.newapptec.com/Content/Images/MobileImage/Icon/nonveg.png" alt="" />
+                    </div>
+                    <div *ngIf="restData.type=='Non-Veg,Veg'">
+                        <img src="http://menuapphybrid.newapptec.com/Content/Images/MobileImage/Icon/veg.png"  alt="" />
+                        <img src="http://menuapphybrid.newapptec.com/Content/Images/MobileImage/Icon/nonveg.png" alt="" />
+                    </div>
+                </ion-col>
+                <ion-col col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 style="height: 50px;" (click)="regularShareMenu(restData.restName,restData.area,restData.city,restData.imagePath1);">
+                    <ion-icon class="share-icon imgIcon" name="share"  color="shareButton"></ion-icon>
+                </ion-col>
+                <ion-col col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 style="height: 50px;" (click)=" locationPageShow(restData.restName,restData.area,restData.suburb,restData.city,restData.state);">
+                         <ion-icon name="pin" class="imgIcon" color="locationButton"></ion-icon>
+                </ion-col>
+                <ion-col col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 style="height: 50px;" (click)="launchDialer(restData.phoneNo1)">
+                    <ion-icon class="share-icon imgIcon" name="call"  color="callButton"></ion-icon>
+                </ion-col>
+            </ion-row>
+
+        </ion-grid>
+
+
+
+         <ion-grid padding *ngIf="toggled">
+            <ion-row *ngFor="let restData of getFullData">
+                <ion-col col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 (click)="openRestMenuPage(restData.id);">
+                     <img-loader src="{{restData.imagePath1}}" (load)="onImageLoad($event)" class="iconShow img-responsive"></img-loader>
+                </ion-col>
+                <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 class="restName" (click)="openRestMenuPage(restData.id);">
+                    {{restData.restName}}, {{restData.area}}, {{restData.city}}
+                </ion-col>
+                <ion-col col-1 >
+                    <div *ngIf="restData.type=='Veg'">
+                        <img src="http://menuapphybrid.newapptec.com/Content/Images/MobileImage/Icon/veg.png"  alt="" />
+                    </div>
+                    <div *ngIf="restData.type=='Non-Veg'">
+                        <img src="http://menuapphybrid.newapptec.com/Content/Images/MobileImage/Icon/nonveg.png" alt="" />
+                    </div>
+                    <div *ngIf="restData.type=='Veg,Non-Veg'">
+                        <img src="http://menuapphybrid.newapptec.com/Content/Images/MobileImage/Icon/veg.png"  alt="" />
+                        <img src="http://menuapphybrid.newapptec.com/Content/Images/MobileImage/Icon/nonveg.png" alt="" />
+                    </div>
+                    <div *ngIf="restData.type=='Non-Veg,Veg'">
+                        <img src="http://menuapphybrid.newapptec.com/Content/Images/MobileImage/Icon/veg.png"  alt="" />
+                        <img src="http://menuapphybrid.newapptec.com/Content/Images/MobileImage/Icon/nonveg.png" alt="" />
+                    </div>
+                </ion-col>
+                <ion-col col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 style="height: 50px;" (click)="regularShareMenu(restData.restName,restData.area,restData.city,restData.imagePath1);">
+                    <ion-icon class="share-icon imgIcon" name="share"  color="shareButton"></ion-icon>
+                </ion-col>
+                <ion-col col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 style="height: 50px;" (click)=" locationPageShow(restData.restName,restData.area,restData.suburb,restData.city,restData.state);">
+                         <ion-icon name="pin" class="imgIcon" color="locationButton"></ion-icon>
+                </ion-col>
+                <ion-col col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 style="height: 50px;" (click)="launchDialer(restData.phoneNo1)">
+                    <ion-icon class="share-icon imgIcon" name="call"  color="callButton"></ion-icon>
+                </ion-col>
+            </ion-row>
+
+        </ion-grid>
+
+
+    </ion-slide>
+</ion-slides>

@@ -1,0 +1,62 @@
+<ion-header>
+    <ion-navbar>   
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>My Profile</ion-title>
+    </ion-navbar>  
+</ion-header> 
+<ion-content>   
+<!--    <ion-grid>
+        <ion-row>     
+            <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 >
+                <div text-center>
+                     <img  [hidden]="profileIcon !== null" src="{{base64Image}}"  class="proPhoto img-thumbnail img-circle" (click)="presentActionSheet()" />
+                     <img src="{{pathForImage(profileIcon)}}" class="proPhoto img-thumbnail img-circle" [hidden]="profileIcon === null" (click)="presentActionSheet()">
+                                    <br/>
+                    <button ion-button  clear color="appcolor" (click)="presentActionSheet()">Change Profile Photo</button>
+                </div>
+            </ion-col>      
+        </ion-row>
+    </ion-grid>-->  
+     <form [formGroup]="myprofileForm">     
+    <ion-list >
+        <ion-item no-lines>
+            <button ion-button item-right outline color="appcolor" (click)="editAction();">
+                <ion-icon name="create"></ion-icon>  Edit
+            </button>
+        </ion-item>
+        <ion-item >
+            <ion-input  type="text" placeholder="Name *"  [disabled]="!disName" formControlName="name" [(ngModel)]="name"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input type="number" placeholder="Mobile No *" [disabled]="!disName" formControlName="mobileNo" [(ngModel)]="mobileNo"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input type="email" placeholder="Email *" [disabled]="!disName" formControlName="email" [(ngModel)]="email"></ion-input>
+        </ion-item>
+        <ion-item>  
+            <ion-input type="text" placeholder="Address" [disabled]="!disName" formControlName="address" [(ngModel)]="address"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input type="text" placeholder="Area" [disabled]="!disName" formControlName="area"  [(ngModel)]="area"></ion-input>
+        </ion-item>   
+        <ion-item>
+            <ion-input type="text" placeholder="City *" [disabled]="!disName" formControlName="city"  [(ngModel)]="city"></ion-input>
+        </ion-item>
+        <ion-item>   
+            <ion-input type="number" placeholder="PinCode" [disabled]="!disName" formControlName="pincode"  [(ngModel)]="pincode"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input type="text" placeholder="State" [disabled]="!disName" formControlName="address"  [(ngModel)]="state"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input type="text" placeholder="Country" [disabled]="!disName" formControlName="address"  [(ngModel)]="country"></ion-input>
+        </ion-item>  
+        <ion-item no-lines><button ion-button color="appcolor" full round [disabled]="!myprofileForm.valid" *ngIf="updateStatus" (click)="updateData();" >Update</button></ion-item>
+        <ion-item><button ion-button item-right outline color="appcolor" (click)="openChangePassword();">
+            <ion-icon name="lock"></ion-icon>  Change Password
+            </button></ion-item>
+    </ion-list>
+     </form>
+</ion-content>

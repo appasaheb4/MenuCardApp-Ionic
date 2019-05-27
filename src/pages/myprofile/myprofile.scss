@@ -1,0 +1,12 @@
+page-myprofile {
+    .proPhoto{
+        height: 150px;
+        width: 150px;
+    }
+    .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus) .item-inner {
+        border-bottom-color: #DEDEDE !important;
+        box-shadow: none !important;
+    }
+
+}
+

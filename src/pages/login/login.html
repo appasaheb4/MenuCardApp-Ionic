@@ -1,0 +1,37 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title class="text-center">Menu Card</ion-title>
+    </ion-navbar>
+    <ion-navbar color="appcolor" class="marginTopLine">
+        <ion-title class="text-center">Login</ion-title>
+    </ion-navbar>  
+</ion-header>   
+
+<ion-content class="login">
+    <div class="form-group" padding>
+        <form [formGroup]="loginForm">
+            <ion-list inset>
+                <ion-item no-lines>
+                    <button ion-button color="signupButton" style="height: 30px;" full round (click)="goRegiationPage();">New User – SIGN UP</button>
+                </ion-item>
+                <ion-list no-lines>
+                    <br/>
+                    <h5 color="dark" class="text-center">!  Already Registered Before  – Sign In </h5>
+                </ion-list>
+                <ion-item>           
+                      <ion-input type="number" placeholder="Mobile Number" formControlName="mobileNo" [(ngModel)]="mobileNo" autofocus></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="password" placeholder="Password" formControlName="password" [(ngModel)]="password"></ion-input>
+                </ion-item>
+                <ion-item no-lines>
+                <button ion-button type="" full round (click)="login();" style="height: 30px;" color="appcolor" [disabled]="!loginForm.valid">Sign In</button>
+                </ion-item>   
+                <ion-item no-lines>
+                <button ion-button block  outline (click)="emailSent();" style="height: 30px;" color="appcolor">Forgot Password</button>
+                </ion-item>      
+            </ion-list>
+        </form>   
+    </div>   
+</ion-content>
+

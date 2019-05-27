@@ -1,0 +1,28 @@
+<ion-header>
+    <ion-navbar hideBackButton="true">
+        <ion-buttons left class="backButton">
+            <button ion-button (click)="back()" >
+                    <ion-icon name="arrow-round-back"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title class="titlePage">Edit</ion-title>     
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <form [formGroup]="editMenuForm">
+        <ion-list inset>
+            <ion-item>
+                <ion-input type="text"  placeholder="Restaurant Name *"  formControlName="restName" [(ngModel)]="restName"></ion-input>
+            </ion-item> 
+            <ion-item>
+                <ion-input type="number"  placeholder="Phone No 1 *" formControlName="phoneNo1" [(ngModel)]="phoneNo1"></ion-input>
+            </ion-item> 
+            <ion-item>
+                <ion-input type="number"  placeholder="Phone No 2 *" formControlName="phoneNo2" [(ngModel)]="phoneNo2"></ion-input>
+            </ion-item>
+            <ion-item>
+                <button ion-button full type="submit" class="lblSize" round color="appcolor" [disabled]="!editMenuForm.valid"  (click)="update();">Update</button>
+            </ion-item>
+        </ion-list>
+    </form>
+</ion-content>
